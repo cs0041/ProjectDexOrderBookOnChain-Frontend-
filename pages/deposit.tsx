@@ -1,5 +1,4 @@
 import React, { useContext, useState } from 'react'
-import Header from '../components/Header'
 import { ContractContext } from '../context/ContratContext'
 import {ContractPairOrderAddress,ContractToken0Address,ContractToken1Address} from '../utils//Address'
 
