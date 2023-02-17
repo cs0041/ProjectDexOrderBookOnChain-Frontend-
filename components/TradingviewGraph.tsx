@@ -11,7 +11,6 @@ import {
 } from 'chart.js'
 import { Line } from 'react-chartjs-2'
 import { ContractContext } from '../context/ContratContext'
-import { ConvertDateTime } from '../utils/DateTime'
 import { createChart, ColorType, CrosshairMode } from 'lightweight-charts'
 import { ethers } from 'ethers'
 
