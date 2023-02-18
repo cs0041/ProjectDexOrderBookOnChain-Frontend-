@@ -31,11 +31,15 @@ export const ChartComponent = () => {
         // @ts-ignore
         width: chartContainerRef.current.clientWidth,
         // @ts-ignore
-        height: chartContainerRef.current.clientHeight,
+        // height: chartContainerRef.current.clientHeight,
       })
     }
     // @ts-ignore
     chart.current = createChart(chartContainerRef.current, {
+      // @ts-ignore
+      width: chartContainerRef.current.clientWidth,
+      // @ts-ignore
+      height: 654,
       handleScale: {
         axisPressedMouseMove: true,
       },
@@ -59,9 +63,6 @@ export const ChartComponent = () => {
       priceScale: {
         borderColor: '#485c7b',
       },
-      // @ts-ignore
-      width: chartContainerRef.current.clientWidth,
-      height: 654,
       timeScale: {
         timeVisible: true,
         secondVisible: false,

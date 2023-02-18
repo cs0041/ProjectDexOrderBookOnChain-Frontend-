@@ -53,34 +53,32 @@ const Home = () => {
 
   return (
     mounted && (
-      <div className=" relative">
-        <div className="border-b-[1px] border-gray-600 ">
+      <div className=" relative ">
+        <div className="border-b-[1px] border-x-[1px]  border-gray-600 ">
           <HeaderData />
         </div>
-        <section className="  h-[82vh] ">
+        <section className="  max-h-[1000px] min-h-[82vh]  ">
           <div className="flex flex-row ">
-            <div className=" w-2/12 h-[82vh]  min-w-fit ">
+            <div className=" w-2/12 max-h-[1000px] min-h-[82vh]  min-w-fit border-x-[1px] border-gray-600 ">
               <OrderBook />
             </div>
-            <div className="w-10/12 border-x-[1px] border-gray-600 ">
-              <div className=" h-[50vh] border-b-[1px] border-gray-600 ">
+            <div className="w-10/12 ">
+              <div className=" h-[654px] border-b-[1px] border-gray-600 max-w-[0px] min-w-full ">
                 <TradingviewGraph />
               </div>
-              <div className=" h-[30vh]  ">
+              <div className="  min-h-[30vh]   ">
                 <PanelCommand />
               </div>
             </div>
-            <div className="w-2/12  min-w-fit ">
+            <div className=" w-2/12 max-h-[1000px] min-h-[82vh]  min-w-fit border-x-[1px] border-gray-600 ">
               <HistoryMarket />
             </div>
           </div>
         </section>
-        <div className="h-[30vh]  border-gray-600 border-t-[1px]">
+        <div className="h-[30vh] w-full  border-gray-600 border-t-[1px]">
           <History />
         </div>
-        <div  className="h-[5vh] " >
-
-        </div>
+        <div className="h-[5vh] "></div>
         {/* {address && <p>My address is {address}</p>} */}
 
         {showUpdateModal && (
@@ -91,13 +89,12 @@ const Home = () => {
           />
         )}
 
-          {notification && (
-            <NotificationModal
-              onClose={() => setNotification(false)}
-              txNotification={txNotification}
-            />
-          )}
-
+        {notification && (
+          <NotificationModal
+            onClose={() => setNotification(false)}
+            txNotification={txNotification}
+          />
+        )}
       </div>
     )
   )

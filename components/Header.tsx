@@ -43,7 +43,7 @@ function Header({}: Props) {
             </Link>
           </div>
 
-          <form className="flex items-center w-1/5">
+          <form className="flex items-center w-1/5 min-w-fit">
             <input
               type="text"
               // onKeyPress={(event) => {
