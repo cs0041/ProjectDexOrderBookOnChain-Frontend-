@@ -222,11 +222,11 @@ export const ContractProvider = ({ children }: ChildrenProps) => {
       }
       const transactionHash = await contract.deposit(amount, addressToken)
       console.log(transactionHash.hash)
-      setTxNotification(transactionHash.hash)
+      // setTxNotification(transactionHash.hash)
       setIsLoadingTxNavBar(true)
       await transactionHash.wait()
       setIsLoadingTxNavBar(false)
-      setNotification(true)
+      // setNotification(true)
       loadBalances()
       setIsLoadingTx(false)
     } catch (error:any) {
@@ -251,11 +251,11 @@ export const ContractProvider = ({ children }: ChildrenProps) => {
       const contract = getPairOrderContract()
       const transactionHash = await contract.withdraw(amount, addressToken)
       console.log(transactionHash.hash)
-      setTxNotification(transactionHash.hash)
+      // setTxNotification(transactionHash.hash)
       setIsLoadingTxNavBar(true)
       await transactionHash.wait()
       setIsLoadingTxNavBar(false)
-      setNotification(true)
+      // setNotification(true)
       loadBalances()
       setIsLoadingTx(false)
     } catch (error:any) {
@@ -268,6 +268,33 @@ export const ContractProvider = ({ children }: ChildrenProps) => {
       setIsLoadingTxNavBar(false)
     }
   }
+
+  const sendTxFaucet = async () => {
+    if (!window.ethereum) return console.log('Please install metamask')
+    try {
+      setIsLoadingTx(true)
+      const contract = getFaucetContract()
+      const transactionHash = await contract.getFaucet()
+      console.log(transactionHash.hash)
+      setTxNotification(transactionHash.hash)
+      // setIsLoadingTxNavBar(true)
+      await transactionHash.wait()
+      setIsLoadingTxNavBar(false)
+      // setNotification(true)
+      loadBalances()
+      setIsLoadingTx(false)
+    } catch (error : any) {
+       try {
+         alert(error.error.data.message)
+       } catch (e) {
+         alert('MetaMask Tx Signature: User denied transaction signature.')
+       }
+      setIsLoadingTx(false)
+      setIsLoadingTxNavBar(false)
+    }
+  }
+
+
   const sendTxMarketOrder = async (side: number, _amount: number | string) => {
     if (!window.ethereum) return console.log('Please install metamask')
     try {
@@ -424,30 +451,6 @@ export const ContractProvider = ({ children }: ChildrenProps) => {
     }
   }
 
-  const sendTxFaucet = async () => {
-    if (!window.ethereum) return console.log('Please install metamask')
-    try {
-      setIsLoadingTx(true)
-      const contract = getFaucetContract()
-      const transactionHash = await contract.getFaucet()
-      console.log(transactionHash.hash)
-      setTxNotification(transactionHash.hash)
-      setIsLoadingTxNavBar(true)
-      await transactionHash.wait()
-      setIsLoadingTxNavBar(false)
-      setNotification(true)
-      loadBalances()
-      setIsLoadingTx(false)
-    } catch (error : any) {
-       try {
-         alert(error.error.data.message)
-       } catch (e) {
-         alert('MetaMask Tx Signature: User denied transaction signature.')
-       }
-      setIsLoadingTx(false)
-      setIsLoadingTxNavBar(false)
-    }
-  }
 
   const loadTimeFaucet = async () => {
     try {
