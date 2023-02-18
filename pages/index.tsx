@@ -54,12 +54,12 @@ const Home = () => {
   return (
     mounted && (
       <div className=" relative ">
-        <div className="border-b-[1px] border-x-[1px]  border-gray-600 ">
+        <div className="border-b-[1px]  border-gray-600 ">
           <HeaderData />
         </div>
         <section className="  max-h-[1000px] min-h-[82vh]  ">
           <div className="flex flex-row ">
-            <div className=" w-2/12 max-h-[1000px] min-h-[82vh]  min-w-fit border-x-[1px] border-gray-600 ">
+            <div className=" w-2/12 max-h-[1000px] min-h-[82vh]  min-w-fit border-r-[1px] border-gray-600 ">
               <OrderBook />
             </div>
             <div className="w-10/12 ">
@@ -70,7 +70,7 @@ const Home = () => {
                 <PanelCommand />
               </div>
             </div>
-            <div className=" w-2/12 max-h-[1000px] min-h-[82vh]  min-w-fit border-x-[1px] border-gray-600 ">
+            <div className=" w-2/12 max-h-[1000px] min-h-[82vh]  min-w-fit border-l-[1px] border-gray-600 ">
               <HistoryMarket />
             </div>
           </div>

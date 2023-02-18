@@ -124,7 +124,7 @@ function deposit({}: Props) {
                 </button>
               </div>
             </div>
-            <div className="  bg-black/50 p-10 rounded-md">
+            <div className="  bg-black/30 p-10 rounded-md">
               <div className="space-y-4">
                 <h1 className="text-center text-xl font-bold mb-5">Withdraw USDT</h1>
                 <span className=" text-xl font-light">Avbl {balancesSpotToken1}</span>
