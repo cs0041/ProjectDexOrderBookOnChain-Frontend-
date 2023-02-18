@@ -128,6 +128,9 @@ interface ChildrenProps {
 
 
 export const ContractProvider = ({ children }: ChildrenProps) => {
+
+
+  
   const [initialLoading, setInitialLoading] = useState(true)
 
   // order sell
@@ -701,6 +704,19 @@ export const ContractProvider = ({ children }: ChildrenProps) => {
       contract.on('RemoveOrder', async () => {
         loadOrderBook()
       })
+
+      if (window.ethereum != undefined){
+        //@ts-ignore
+        window.ethereum.on('accountsChanged', () => {
+          window.location.reload()
+        })
+        interface ConnectInfo {
+          chainId: string;
+        }
+        
+        //@ts-ignore
+        window.ethereum.on('chainChanged', (_chainId) => window.location.reload())
+      }
     } catch (error) {}
   }
 
