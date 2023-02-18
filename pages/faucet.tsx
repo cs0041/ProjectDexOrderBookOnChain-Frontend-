@@ -74,10 +74,10 @@ function faucet({}: Props) {
             This faucet transfers TestToken (BTC, USDT)
           </p>
           <p className="text-gray-400 text-sm  ">
-            on Matic Mumbai testnets for use in TrustLess Protocal
+            on Matic Mumbai testnets for use in Trust Less Protocal
           </p>
           <h2 className="text-white  text-lg font-bold   mt-10">NetWork</h2>
-          <button className=" max-w-[100px] Buttonselect   mt-2  !cursor-default">
+          <button className=" max-w-[100px] Buttonselect !bg-slate-700   mt-2  !cursor-default">
             Mumbai
           </button>
 
@@ -85,10 +85,10 @@ function faucet({}: Props) {
             Token received
           </h2>
           <div className="flex flex-row w-full mt-2 space-x-5 ">
-            <button className=" max-w-[120px] Buttonselect    !cursor-default">
+            <button className=" max-w-[120px] Buttonselect !bg-slate-700     !cursor-default">
               10 BTC
             </button>
-            <button className=" max-w-[120px] Buttonselect    !cursor-default">
+            <button className=" max-w-[120px] Buttonselect !bg-slate-700     !cursor-default">
               1000 USDT
             </button>
           </div>
@@ -96,7 +96,7 @@ function faucet({}: Props) {
           <h2 className="text-white  text-lg font-bold   mt-5">
             Wallet Address
           </h2>
-          <div className="Buttonselect py-3 mt-2 !cursor-default">
+          <div className="Buttonselect py-3 mt-2 !bg-slate-700  !cursor-default">
             {address ? address : 'pls connect wallet'}
           </div>
 
@@ -105,7 +105,7 @@ function faucet({}: Props) {
             onClick={sendTxFaucet}
             className={`${
               timeUnLockFaucet > Math.floor(Date.now() / 1000)
-                ? 'cursor-not-allowed bg-gray-700'
+                ? 'cursor-not-allowed bg-gray-500  ' 
                 : 'Buttonselect hover:opacity-60 '
             }  mt-5   text-white border-none outline-none w-full py-3 font-bold text-2xl rounded-md  transition-all `}
           >

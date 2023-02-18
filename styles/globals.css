@@ -23,7 +23,7 @@
 /* custom classNames */
 @layer components {
     .InputOrder {
-        @apply bg-gray-800 flex flex-row text-base p-1 rounded-sm
+        @apply bg-gray-800 flex flex-row text-base p-1 rounded-sm border-[1px] border-gray-800 hover:border-gray-600 cursor-text
     }
 
     .HeadSelectTypeOrder {
