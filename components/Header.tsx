@@ -4,6 +4,7 @@ import React, { useContext } from 'react'
 import { useRouter } from 'next/router'
 import Loader from './Loader'
 import { ContractContext } from '../context/ContratContext'
+import Image from 'next/image'
 type Props = {}
 
 function Header({}: Props) {
@@ -13,7 +14,9 @@ function Header({}: Props) {
       <div className="border-b-[1px] border-gray-600  sticky inset-0 z-10 ">
         <div className="flex flex-row text-base font-semibold items-center justify-between px-10  bg-[#1c1c28] py-3 space-x-10">
           <div className="flex flex-row items-center space-x-2">
-            <h1 className="mr-20">Trust Less</h1>
+            <h1 className="text-2xl mr-10 font-bold text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-pink-600 animate-pulse">
+              Trustless protocol
+            </h1>
             <Link href="/">
               <h1
                 className={`${
@@ -84,11 +87,14 @@ function Header({}: Props) {
 
           <div className="flex flex-row items-center space-x-2">
             {isLoadingTxNavBar && (
-              <div 
-               onClick={() => {
-                window.open(`https://mumbai.polygonscan.com/tx/${txNotification}`)
-              }}
-              className="transition duration-150 ease-in-out cursor-pointer hover:scale-105 px-5 space-x-3 py-2 flex justify-center items-center text-black font-bold bg-white rounded-xl">
+              <div
+                onClick={() => {
+                  window.open(
+                    `https://mumbai.polygonscan.com/tx/${txNotification}`
+                  )
+                }}
+                className="transition duration-150 ease-in-out cursor-pointer hover:scale-105 px-5 space-x-3 py-2 flex justify-center items-center text-black font-bold bg-white rounded-xl"
+              >
                 <h1>Pending </h1>
                 {/* <span className={`loader`}></span> */}
                 <Loader />
