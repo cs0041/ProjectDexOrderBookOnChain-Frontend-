@@ -36,7 +36,7 @@ function HistoryMarket() {
         <div>Price(USDT)</div>
         <div>Amount(BTC)</div>
       </div>
-      <div className="overflow-y-auto max-h-full pb-10 ">
+      <div className="myscroll h-[92%] pb-10 ">
         {marketEvent.map((item, index) => (
           <div className=" grid grid-cols-3 text-base  py-2 ">
             <div>{ConvertSmallDateTime(item.date.toNumber())}</div>
