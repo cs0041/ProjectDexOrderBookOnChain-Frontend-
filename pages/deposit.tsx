@@ -24,14 +24,14 @@ function deposit({}: Props) {
     <>
 
     <div className="flex flex-col w-full h-[92vh] p-10 space-y-10 ">
-      <div className="flex flex-row justify-center space-x-10">
+      <div className="flex flex-col xl:flex-row justify-center  gap-10">
         <div className="blue-glassmorphism p-10">
-          <h1 className="text-2xl text-center font-bold mb-10">Deposit</h1>
+          <h1 className="text-xl text-center font-bold mb-10">Deposit</h1>
           <div className="flex flex-row space-x-10">
             <div className="  bg-black/30 p-10   rounded-md">
               <div className="space-y-4">
-                <h1 className="text-center text-xl font-bold mb-5">Deposit BTC</h1>
-                <span className=" text-xl font-light">Avbl {balancesERC20Token0}</span>
+                <h1 className="text-center text-base font-bold mb-5">Deposit BTC</h1>
+                <span className=" text-base font-light">Avbl {balancesERC20Token0}</span>
                 <div className="InputOrder">
                   <span className="flex items-center pl-2 pr-5">Amount</span>
                   <input
@@ -44,7 +44,7 @@ function deposit({}: Props) {
                     onChange={(e) => {
                       setAmountInputDepositToken0(e.target.value)
                     }}
-                    className="  w-full py-2 pr-2 text-right  bg-transparent outline-none  text-white"
+                    className="  w-full py-2 pr-2 text-right    bg-transparent outline-none  text-white"
                   />
                   <span className="flex items-center  pr-5">BTC</span>
                 </div>
@@ -60,8 +60,8 @@ function deposit({}: Props) {
             </div>
             <div className="  bg-black/30 p-10 rounded-md">
               <div className="space-y-4">
-                <h1 className="text-center text-xl font-bold mb-5">Deposit USDT</h1>
-                    <span className=" text-xl font-light">Avbl {balancesERC20Token1}</span>
+                <h1 className="text-center text-base font-bold mb-5">Deposit USDT</h1>
+                    <span className=" text-base font-light">Avbl {balancesERC20Token1}</span>
                 <div className="InputOrder">
                   <span className="flex items-center pl-2 pr-5">Amount</span>
                   <input
@@ -92,12 +92,12 @@ function deposit({}: Props) {
         </div>
 
         <div className="blue-glassmorphism  p-10 ">
-          <h1 className="text-2xl text-center font-bold mb-10">Withdraw</h1>
+          <h1 className="text-xl text-center font-bold mb-10">Withdraw</h1>
           <div className="flex flex-row space-x-10">
             <div className="  bg-black/30 p-10   rounded-md">
               <div className="space-y-4">
-                <h1 className="text-center text-xl font-bold mb-5">Withdraw BTC</h1>
-                 <span className=" text-xl font-light">Avbl {balancesSpotToken0}</span>
+                <h1 className="text-center text-base font-bold mb-5">Withdraw BTC</h1>
+                 <span className=" text-base font-light">Avbl {balancesSpotToken0}</span>
                 <div className="InputOrder">
                   <span className="flex items-center pl-2 pr-5">Amount</span>
                   <input
@@ -126,8 +126,8 @@ function deposit({}: Props) {
             </div>
             <div className="  bg-black/30 p-10 rounded-md">
               <div className="space-y-4">
-                <h1 className="text-center text-xl font-bold mb-5">Withdraw USDT</h1>
-                <span className=" text-xl font-light">Avbl {balancesSpotToken1}</span>
+                <h1 className="text-center text-basae font-bold mb-5">Withdraw USDT</h1>
+                <span className=" text-base font-light">Avbl {balancesSpotToken1}</span>
                 <div className="InputOrder">
                   <span className="flex items-center pl-2 pr-5">Amount</span>
                   <input
@@ -157,9 +157,9 @@ function deposit({}: Props) {
           </div>
         </div>
       </div>
-      <div className="flex justify-center text-xl">
+      <div className="flex justify-center  ">
         <div className="blue-glassmorphism  p-10">
-          <h1 className="text-center font-semibold m-5 text-2xl">Dashboard blacness</h1>
+          <h1 className="text-center font-semibold m-5 text-xl">Dashboard Balances</h1>
           <div className="flex flex-row space-x-10 font-extralight">
             <div className="flex flex-col text-green-500">
               <h1 className='flex flex-col '>
