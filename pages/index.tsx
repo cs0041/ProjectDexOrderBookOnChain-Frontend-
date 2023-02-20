@@ -78,7 +78,7 @@ const Home = () => {
         <div className="h-[30vh] w-full  border-gray-600 border-t-[1px]">
           <History />
         </div>
-        <div className="h-[5vh] "></div>
+        <div className="h-[8vh] "></div>
         {/* {address && <p>My address is {address}</p>} */}
 
         {showUpdateModal && (
