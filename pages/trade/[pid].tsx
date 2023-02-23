@@ -53,6 +53,7 @@ const Home = ({ query }: Props) => {
   } = useContext(ContractContext)
 
   useEffect(() => {
+     console.log('go', query)
     async function  check  ()  {
          const isExistPair  = await checkFactoryPair(addresstoken0 as string, addresstoken1 as string)
          console.log('checkFactoryPair', isExistPair)
