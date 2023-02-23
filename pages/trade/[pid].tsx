@@ -27,10 +27,9 @@ interface Props {
 //   abi: contractFaucetABI,
 // }
 
-const Home = ({ query }: Props) => {
+const Home = () => {
   const router = useRouter()
-
-  const {  contractaddress, addresstoken0 ,  addresstoken1 } = query 
+  const { pid,contractaddress, addresstoken0, addresstoken1 } = router.query 
 
   // for update modal
   const [sideBuyOrSell, setSideBuyOrSell] = useState<number>(-1)
@@ -53,7 +52,7 @@ const Home = ({ query }: Props) => {
   } = useContext(ContractContext)
 
   useEffect(() => {
-     console.log('go', query)
+     console.log('go', router.query)
     async function  check  ()  {
          const isExistPair  = await checkFactoryPair(addresstoken0 as string, addresstoken1 as string)
          console.log('checkFactoryPair', isExistPair)
@@ -64,7 +63,7 @@ const Home = ({ query }: Props) => {
          }
     }
     check();
-    console.log('query', query)
+    console.log('query', router.query)
     setContractPairOrderAddress(contractaddress as string)
     setContractToken0Address(addresstoken0 as string)
     setContractToken1Address(addresstoken1 as string)
@@ -117,8 +116,8 @@ const Home = ({ query }: Props) => {
 
 export default Home
 
-export const getServerSideProps = async (context: NextPageContext) => {
-  const { query } = context
-  return { props: { query } }
-}
+// export const getServerSideProps = async (context: NextPageContext) => {
+//   const { query } = context
+//   return { props: { query } }
+// }
 
