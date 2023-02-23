@@ -22,7 +22,7 @@ function deposit({ query }: Props) {
       checkFactoryPair,
     } = useContext(ContractContext)
     const router = useRouter()
-    const { pid, contractaddress, addresstoken0, addresstoken1 } = query 
+     const { pid, contractaddress, addresstoken0, addresstoken1 } = router.query 
 
     useEffect(() => {
         async function check() {
@@ -30,13 +30,11 @@ function deposit({ query }: Props) {
             addresstoken0 as string,
             addresstoken1 as string
           )
-          console.log('checkFactoryPair', isExistPair)
           if (contractaddress != isExistPair) {
             router.push('/nopair')
           }
         }
         check()
-        console.log('query', query)
         setContractPairOrderAddress(contractaddress as string)
         setContractToken0Address(addresstoken0 as string)
         setContractToken1Address(addresstoken1 as string)
@@ -289,8 +287,8 @@ function deposit({ query }: Props) {
 export default deposit
 
 
-export const getServerSideProps = async (context: NextPageContext) => {
-  const { query } = context
-  return { props: { query } }
-}
+// export const getServerSideProps = async (context: NextPageContext) => {
+//   const { query } = context
+//   return { props: { query } }
+// }
 

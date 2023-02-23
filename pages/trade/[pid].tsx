@@ -52,10 +52,8 @@ const Home = () => {
   } = useContext(ContractContext)
 
   useEffect(() => {
-     console.log('go', router.query)
     async function  check  ()  {
          const isExistPair  = await checkFactoryPair(addresstoken0 as string, addresstoken1 as string)
-         console.log('checkFactoryPair', isExistPair)
          if (
            contractaddress != isExistPair
          ) {
