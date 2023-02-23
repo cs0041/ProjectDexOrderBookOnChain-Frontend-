@@ -274,7 +274,7 @@ export const ContractProvider = ({ children }: ChildrenProps) => {
   const [isLoadingListFactoryPairAddress, setIsLoadingListFactoryPairAddress] = useState(false)
 
   useEffect(() => {
-    // if (!window.ethereum) return console.log('Please install metamask')
+     if (!window.ethereum) return alert('Please install metamask')
     loadOrderBook()
     loadPriceToken()
     loadBalances()
