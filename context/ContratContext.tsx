@@ -285,6 +285,8 @@ export const ContractProvider = ({ children }: ChildrenProps) => {
     loadHistoryMarketOrder()
 
     addlistenerMarketEvents()
+
+    loadListFactoryPairAddress()
     // MarketQueryEvents()
     // QueryHisoryEvents()
     loadTimeFaucet()

@@ -12,11 +12,11 @@ type Props = {}
 
 const markets = (props: Props) => {
   const { listPairOrder,isLoadingListFactoryPairAddress,loadListFactoryPairAddress } = useContext(ContractContext)
-  useEffect(() => {
-    loadListFactoryPairAddress()
+  // useEffect(() => {
+  //   loadListFactoryPairAddress()
   
     
-  }, [])
+  // }, [])
   
   return (
     <div className="  flex flex-1 mt-[10vh]  items-center justify-center">
