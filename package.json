@@ -14,7 +14,7 @@
     "dayjs": "^1.11.7",
     "ethers": "^5.7.2",
     "lightweight-charts": "^4.0.0",
-    "next": "latest",
+    "next": "^13.0.6",
     "react": "18.2.0",
     "react-chartjs-2": "^5.2.0",
     "react-dom": "18.2.0",
