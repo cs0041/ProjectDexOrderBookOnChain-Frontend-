@@ -14,10 +14,12 @@ export type { IERC20Metadata } from "./@openzeppelin/contracts/token/ERC20/exten
 export { IERC20Metadata__factory } from "./factories/@openzeppelin/contracts/token/ERC20/extensions/IERC20Metadata__factory";
 export type { IERC20 } from "./@openzeppelin/contracts/token/ERC20/IERC20";
 export { IERC20__factory } from "./factories/@openzeppelin/contracts/token/ERC20/IERC20__factory";
+export type { FactoryPair } from "./contracts/FactoryPair.sol/FactoryPair";
+export { FactoryPair__factory } from "./factories/contracts/FactoryPair.sol/FactoryPair__factory";
+export type { PairNewOrder } from "./contracts/FactoryPair.sol/PairNewOrder";
+export { PairNewOrder__factory } from "./factories/contracts/FactoryPair.sol/PairNewOrder__factory";
 export type { Faucet } from "./contracts/Faucet.sol/Faucet";
 export { Faucet__factory } from "./factories/contracts/Faucet.sol/Faucet__factory";
-export type { PairNewOrder } from "./contracts/PairOrder.sol/PairNewOrder";
-export { PairNewOrder__factory } from "./factories/contracts/PairOrder.sol/PairNewOrder__factory";
 export type { Token0 } from "./contracts/Token0";
 export { Token0__factory } from "./factories/contracts/Token0__factory";
 export type { Token1 } from "./contracts/Token1";

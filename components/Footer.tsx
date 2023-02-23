@@ -17,7 +17,7 @@ function Footer({}: Props) {
       <div className="flex flex-row space-x-10 items-center">
         <div className="flex flex-row items-center space-x-2">
           <ChartBarIcon className="h-4 w-4 text-green-600" />
-          <span>v 0.1.0</span>
+          <span>v 0.2.0</span>
         </div>
         <div className="text-green-600 animate-pulse pl-10 border-l-2 border-gray-600">
           POWERED BY 0xPascal

@@ -3,15 +3,13 @@ import { shortenAddress } from '../utils/shortenAddress'
 import { XCircleIcon } from '@heroicons/react/24/outline'
 interface Props {
   txNotification: string
-  onClose:any
+  onClose: any
 }
 
 const NotificationModal = ({ txNotification, onClose }: Props) => {
-
   return (
     <>
       <div className="flex flex-col  justify-center items-center   top-0 right-10  z-10 fixed transition duration-150 ease-out">
-        
         <div
           onClick={(e) => e.stopPropagation()}
           className=" p-5  mt-20 flex flex-col backdrop-blur-xl  border-[1px] border-gray-600 rounded-lg"

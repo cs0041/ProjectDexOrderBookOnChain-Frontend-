@@ -2,11 +2,15 @@ import React, { useContext, useEffect, useState } from 'react'
 import { ContractContext } from '../context/ContratContext'
 import UpdateModal from '../components/Modal'
 import { useAccount } from 'wagmi'
-import { AdjustmentsHorizontalIcon, ArrowPathIcon } from '@heroicons/react/24/outline'
+import {
+  AdjustmentsHorizontalIcon,
+  ArrowPathIcon,
+} from '@heroicons/react/24/outline'
 import { TrashIcon } from '@heroicons/react/24/outline'
 import { ethers } from 'ethers'
 import { ConvertFullDateTime } from '../utils/DateTime'
 import { toEtherandFixFloatingPoint } from '../utils/UnitInEther'
+import { notificationToast } from '../utils/notificationToastify'
 
 type Props = {}
 
@@ -25,8 +29,9 @@ const History = (props: Props) => {
     loadOrderBookByAddress,
     loadHistoryByAddress,
     historyOrderEvent,
+    symbolToken0,
+    symbolToken1,
   } = useContext(ContractContext)
-
 
   // for update modal
   const [sideBuyOrSell, setSideBuyOrSell] = useState<number>(-1)
@@ -74,7 +79,7 @@ const History = (props: Props) => {
       <div className="h-full  myscroll">
         {selectShowOrder === ShowOrderStatus.OpenOrder ? (
           <>
-            <div className=" text-xl grid grid-cols-9  border-b-2 border-gray-700 p-3 ">
+            <div className=" text-lg grid grid-cols-9  border-b-2 border-gray-700 p-3 ">
               <div>Date</div>
               <div>Pair</div>
               <div>Type</div>
@@ -88,9 +93,12 @@ const History = (props: Props) => {
 
             <div className="max-h-full ">
               {orderBookByAddress.map((item) => (
-                <div className=" grid grid-cols-9 text-xl border-b-2 border-gray-700  p-3 ">
+                <div className=" grid grid-cols-9 text-lg border-b-2 border-gray-700  p-3 ">
                   <div>{ConvertFullDateTime(Number(item.createdDate))}</div>
-                  <div> BTC/USDT</div>
+                  <div>
+                    {' '}
+                    {symbolToken0} - {symbolToken1}
+                  </div>
                   <div>Limit</div>
                   <div
                     className={`${
@@ -100,7 +108,7 @@ const History = (props: Props) => {
                     {item.BuyOrSell === 0 ? 'Buy' : 'Sell'}
                   </div>
                   <div className="flex flex-row">
-                    {item.price}
+                    {item.price} {symbolToken1}
                     <AdjustmentsHorizontalIcon
                       onClick={() => {
                         setIdUpdate(item.id)
@@ -111,7 +119,7 @@ const History = (props: Props) => {
                     />
                   </div>
                   <div className="flex flex-row">
-                    {item.amount}
+                    {item.amount} {symbolToken0}
                     <AdjustmentsHorizontalIcon
                       onClick={() => {
                         setIdUpdate(item.id)
@@ -121,10 +129,14 @@ const History = (props: Props) => {
                       className="IconHover !h-8 !w-8"
                     />
                   </div>
-                  <div>{item.filled}</div>
-                  <div>{Number(item.price) * Number(item.amount)}</div>
+                  <div>{item.filled} {symbolToken0}</div>
+                  <div>{Number(item.price) * Number(item.amount)} {symbolToken1}</div>
                   <TrashIcon
-                    onClick={() => sendTxCancelOrder(item.BuyOrSell, item.id)}
+                    onClick={() => {
+                      notificationToast(
+                        sendTxCancelOrder(item.BuyOrSell, item.id)
+                      )
+                    }}
                     className="IconHover !h-8 !w-8"
                   />
                 </div>
@@ -133,7 +145,7 @@ const History = (props: Props) => {
           </>
         ) : (
           <>
-            <div className=" text-xl grid grid-cols-6  border-b-2 border-gray-700 p-3   ">
+            <div className=" text-lg grid grid-cols-6  border-b-2 border-gray-700 p-3   ">
               <div>Date</div>
               <div>Pair</div>
               <div>Type</div>
@@ -144,9 +156,12 @@ const History = (props: Props) => {
 
             <div className=" max-h-full ">
               {historyOrderEvent.map((item) => (
-                <div className=" grid grid-cols-6 text-xl border-b-2 border-gray-700  p-3">
+                <div className=" grid grid-cols-6 text-lg border-b-2 border-gray-700  p-3">
                   <div>{ConvertFullDateTime(item.date.toNumber())}</div>
-                  <div> BTC/USDT</div>
+                  <div>
+                    {' '}
+                    {symbolToken0} - {symbolToken1}
+                  </div>
                   <div>{item.Type}</div>
                   <div
                     className={`${
@@ -170,9 +185,19 @@ const History = (props: Props) => {
                   <div>
                     {Number(toEtherandFixFloatingPoint(item.price)) === 0
                       ? 'Market'
-                      : toEtherandFixFloatingPoint(item.price)}
+                      : `${toEtherandFixFloatingPoint(
+                          item.price
+                        )} ${symbolToken1}`}
                   </div>
-                  <div> {toEtherandFixFloatingPoint(item.amount)} </div>
+                  <div>
+                    {Number(toEtherandFixFloatingPoint(item.price)) === 0
+                      ? `${toEtherandFixFloatingPoint(
+                          item.amount
+                        )} ${symbolToken1}`
+                      : `${toEtherandFixFloatingPoint(
+                          item.amount
+                        )} ${symbolToken0}`}
+                  </div>
                 </div>
               ))}
             </div>

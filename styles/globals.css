@@ -10,11 +10,14 @@
     margin: 0;
   }
 
+
   body {
         @apply bg-[#1c1c28] text-white  
         !scrollbar-thin !scrollbar-track-transparent 
         !scrollbar-thumb-gray-600 !scrollbar-thumb-rounded-full
     }
+
+   
 }
 
 
@@ -51,6 +54,10 @@
 
     .myscroll {
       @apply  overflow-y-auto  scrollbar-thin scrollbar-thumb-gray-700   scrollbar-thumb-rounded-full scrollbar-track-rounded-full
+    }
+
+    .myXscroll {
+      @apply  overflow-x-auto  scrollbar-thin scrollbar-thumb-gray-700   scrollbar-thumb-rounded-full scrollbar-track-rounded-full
     }
 
 

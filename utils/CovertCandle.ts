@@ -1,6 +1,6 @@
-export function convertToOHLC(data: TypesTradingViewOriginal[]) {
+export function convertToOHLC(data: TypesTradingViewOriginal[],timesecode : number) {
 
-  let lengthTimeSecond = 60
+  let lengthTimeSecond = timesecode //60
   let startTime = data[0].time
   let Allresult: TypesTradingViewOriginal[][] = []
   let tempResult: TypesTradingViewOriginal[] = []

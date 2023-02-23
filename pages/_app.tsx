@@ -17,7 +17,10 @@ import { Chain } from 'wagmi/chains'
 import { ContractProvider } from '../context/ContratContext'
 import Header from '../components/Header'
 import Footer from '../components/Footer'
-
+import { Toaster } from 'react-hot-toast'
+import { ToastContainer } from 'react-toastify'
+  import 'react-toastify/dist/ReactToastify.css'
+import ModalShowNew from '../components/ModalShowNew'
 
 
 const hardhat: Chain = {
@@ -73,6 +76,12 @@ function MyApp({ Component, pageProps }: AppProps) {
           <Header />
           <Component {...pageProps} />
           <Footer />
+          {/* <Toaster
+          position='bottom-right'
+          /> */}
+          <ToastContainer className="!top-14" theme="dark" />
+
+          <ModalShowNew />
         </RainbowKitProvider>
       </WagmiConfig>
     </ContractProvider>

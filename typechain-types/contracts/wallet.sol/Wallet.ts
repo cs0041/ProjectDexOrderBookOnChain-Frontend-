@@ -28,6 +28,8 @@ export interface WalletInterface extends utils.Interface {
     "balancesSpot(address,address)": FunctionFragment;
     "balancesTrade(address,address)": FunctionFragment;
     "deposit(uint256,address)": FunctionFragment;
+    "token0()": FunctionFragment;
+    "token1()": FunctionFragment;
     "withdraw(uint256,address)": FunctionFragment;
   };
 
@@ -36,6 +38,8 @@ export interface WalletInterface extends utils.Interface {
       | "balancesSpot"
       | "balancesTrade"
       | "deposit"
+      | "token0"
+      | "token1"
       | "withdraw"
   ): FunctionFragment;
 
@@ -51,6 +55,8 @@ export interface WalletInterface extends utils.Interface {
     functionFragment: "deposit",
     values: [PromiseOrValue<BigNumberish>, PromiseOrValue<string>]
   ): string;
+  encodeFunctionData(functionFragment: "token0", values?: undefined): string;
+  encodeFunctionData(functionFragment: "token1", values?: undefined): string;
   encodeFunctionData(
     functionFragment: "withdraw",
     values: [PromiseOrValue<BigNumberish>, PromiseOrValue<string>]
@@ -65,6 +71,8 @@ export interface WalletInterface extends utils.Interface {
     data: BytesLike
   ): Result;
   decodeFunctionResult(functionFragment: "deposit", data: BytesLike): Result;
+  decodeFunctionResult(functionFragment: "token0", data: BytesLike): Result;
+  decodeFunctionResult(functionFragment: "token1", data: BytesLike): Result;
   decodeFunctionResult(functionFragment: "withdraw", data: BytesLike): Result;
 
   events: {};
@@ -115,6 +123,10 @@ export interface Wallet extends BaseContract {
       overrides?: Overrides & { from?: PromiseOrValue<string> }
     ): Promise<ContractTransaction>;
 
+    token0(overrides?: CallOverrides): Promise<[string]>;
+
+    token1(overrides?: CallOverrides): Promise<[string]>;
+
     withdraw(
       amount: PromiseOrValue<BigNumberish>,
       token: PromiseOrValue<string>,
@@ -140,6 +152,10 @@ export interface Wallet extends BaseContract {
     overrides?: Overrides & { from?: PromiseOrValue<string> }
   ): Promise<ContractTransaction>;
 
+  token0(overrides?: CallOverrides): Promise<string>;
+
+  token1(overrides?: CallOverrides): Promise<string>;
+
   withdraw(
     amount: PromiseOrValue<BigNumberish>,
     token: PromiseOrValue<string>,
@@ -164,6 +180,10 @@ export interface Wallet extends BaseContract {
       token: PromiseOrValue<string>,
       overrides?: CallOverrides
     ): Promise<void>;
+
+    token0(overrides?: CallOverrides): Promise<string>;
+
+    token1(overrides?: CallOverrides): Promise<string>;
 
     withdraw(
       amount: PromiseOrValue<BigNumberish>,
@@ -193,6 +213,10 @@ export interface Wallet extends BaseContract {
       overrides?: Overrides & { from?: PromiseOrValue<string> }
     ): Promise<BigNumber>;
 
+    token0(overrides?: CallOverrides): Promise<BigNumber>;
+
+    token1(overrides?: CallOverrides): Promise<BigNumber>;
+
     withdraw(
       amount: PromiseOrValue<BigNumberish>,
       token: PromiseOrValue<string>,
@@ -218,6 +242,10 @@ export interface Wallet extends BaseContract {
       token: PromiseOrValue<string>,
       overrides?: Overrides & { from?: PromiseOrValue<string> }
     ): Promise<PopulatedTransaction>;
+
+    token0(overrides?: CallOverrides): Promise<PopulatedTransaction>;
+
+    token1(overrides?: CallOverrides): Promise<PopulatedTransaction>;
 
     withdraw(
       amount: PromiseOrValue<BigNumberish>,

@@ -6,9 +6,9 @@ import { FloatingPoint } from '../utils/UnitInEther'
 type Props = {}
 
 enum ShowOrderBookStatus {
-  BS = "BuySell",
-  S = "Sell",
-  B = "Buy"
+  BS = 'BuySell',
+  S = 'Sell',
+  B = 'Buy',
 }
 
 function OrderBook({}: Props) {
@@ -18,9 +18,12 @@ function OrderBook({}: Props) {
     loadingOrderSell,
     orderBookBuy,
     orderBookSell,
+    symbolToken0,
+    symbolToken1,
   } = useContext(ContractContext)
 
-  const [statusShowOrderBook, setStatusShowOrderBook] = useState<ShowOrderBookStatus>(ShowOrderBookStatus.BS)
+  const [statusShowOrderBook, setStatusShowOrderBook] =
+    useState<ShowOrderBookStatus>(ShowOrderBookStatus.BS)
 
   return (
     <div className=" flex flex-col flex-1 h-full">
@@ -64,17 +67,21 @@ function OrderBook({}: Props) {
       </header>
 
       <div className="text-sm grid grid-cols-3  gap-x-3 pr-5  pb-5 ">
-        <div className="text-right">Price(USDT)</div>
-        <div className="text-right">Amount(BTC)</div>
-        <div className="text-right">Total</div>
+        <div className="text-right">Price({symbolToken1})</div>
+        <div className="text-right">Amount({symbolToken0})</div>
+        <div className="text-right">Total({symbolToken1})</div>
       </div>
 
       {statusShowOrderBook === ShowOrderBookStatus.B ? null : (
-        <div className={` 
-        ${statusShowOrderBook === ShowOrderBookStatus.S ? "h-[84%]" : "h-[44%]"} 
-        text-red-500   pr-5 text-base myscroll `}>
+        <div
+          className={` 
+        ${
+          statusShowOrderBook === ShowOrderBookStatus.S ? 'h-[84%]' : 'h-[44%]'
+        } 
+        text-red-500   pr-5 text-base myscroll `}
+        >
           {orderBookSell.map((item) => (
-            <div className="grid grid-cols-3 gap-x-3">
+            <div className="grid grid-cols-3 gap-x-3 text-sm ">
               <div className="text-right ">{item.price}</div>
               <div className="text-right ">
                 {(Number(item.amount) - Number(item.filled)).toFixed(
@@ -96,14 +103,18 @@ function OrderBook({}: Props) {
         <div className="w-full h-[4%] text-3xl border-y-[1px] border-gray-600  my-5 " />
       )}
 
-
-
       {statusShowOrderBook === ShowOrderBookStatus.S ? null : (
-        <div className={`
-          ${statusShowOrderBook === ShowOrderBookStatus.B ? "h-[84%]" : "h-[44%]"}  
-        text-green-500  pr-5 text-base myscroll`}>
+        <div
+          className={`
+          ${
+            statusShowOrderBook === ShowOrderBookStatus.B
+              ? 'h-[84%]'
+              : 'h-[44%]'
+          }  
+        text-green-500  pr-5 text-base myscroll`}
+        >
           {orderBookBuy.map((item) => (
-            <div className="grid grid-cols-3 gap-x-3">
+            <div className="grid grid-cols-3 gap-x-3 text-sm ">
               <div className="text-right">{item.price}</div>
               <div className="text-right ">
                 {(Number(item.amount) - Number(item.filled)).toFixed(

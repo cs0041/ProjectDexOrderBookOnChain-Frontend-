@@ -10,5 +10,7 @@ export const toFixUnits = (amount: number, decimal: string) =>
   ethers.utils.formatUnits(amount, decimal)
  export const toEtherandFixFloatingPoint = (amount: ethers.BigNumber) =>
   Number(ethers.utils.formatEther(amount)).toFixed(4)
+ export const toEtherFloatingPoint = (amount: ethers.BigNumber, point: number) =>
+   Number(ethers.utils.formatEther(amount)).toFixed(point)
 
   export const FloatingPoint = 4
