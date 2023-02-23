@@ -30,7 +30,7 @@ interface Props {
 const Home = ({ query }: Props) => {
   const router = useRouter()
 
-  const { pid, contractaddress, addresstoken0 ,  addresstoken1 } = query 
+  const {  contractaddress, addresstoken0 ,  addresstoken1 } = query 
 
   // for update modal
   const [sideBuyOrSell, setSideBuyOrSell] = useState<number>(-1)
