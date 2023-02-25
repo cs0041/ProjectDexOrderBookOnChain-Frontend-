@@ -56,82 +56,86 @@ const markets = (props: Props) => {
               </div>
             ) : (
               <>
-                {listPairOrder.map((item, index) => (
-                  <div
-                    className=" 
+                {listPairOrder.length > 0 ? (
+                  listPairOrder.map((item, index) => (
+                    <div
+                      className=" 
               rounded-t-none 
               px-5 py-5 grid grid-cols-6 hover:bg-black/20     space-x-10    items-center"
-                  >
-                    <div>{index + 1}</div>
-                    <div className="col-span-2 flex flex-row space-x-5">
-                      <Image
-                        src="/images/images/cryptocurrency.png"
-                        alt="me"
-                        width="70"
-                        height="20"
-                      />
-                      <div className="flex flex-col">
-                        <h1>
-                          {item.symbolToken0}-{item.symbolToken1}
-                        </h1>
+                    >
+                      <div>{index + 1}</div>
+                      <div className="col-span-2 flex flex-row space-x-5">
+                        <Image
+                          src="/images/images/cryptocurrency.png"
+                          alt="me"
+                          width="70"
+                          height="20"
+                        />
+                        <div className="flex flex-col">
+                          <h1>
+                            {item.symbolToken0}-{item.symbolToken1}
+                          </h1>
 
-                        <span className="font-light text-xs text-gray-500 flex ">
-                          {item.symbolToken0} :{' '}
-                          {shortenAddress(item.addressToken0)}
-                          <ClipboardDocumentListIcon
-                            onClick={() => {
-                              copy(item.addressToken0)
-                              simpleNotificationToast('Copied to clipboard!')
-                            }}
-                            className=" IconHover h-4 w-4"
-                          />
-                        </span>
-                        <span className="font-light text-xs text-gray-500 flex">
-                          {item.symbolToken1} :{' '}
-                          {shortenAddress(item.addressToken1)}
-                          <ClipboardDocumentListIcon
-                            onClick={() => {
-                              copy(item.addressToken1)
-                              simpleNotificationToast('Copied to clipboard!')
-                            }}
-                            className=" IconHover h-4 w-4"
-                          />
-                        </span>
-                        <span className="font-light text-xs text-gray-500 flex">
-                          Contract Pair :{' '}
-                          {shortenAddress(item.addressContractPair)}
-                          <ClipboardDocumentListIcon
-                            onClick={() => {
-                              copy(item.addressContractPair)
-                              simpleNotificationToast('Copied to clipboard!')
-                            }}
-                            className=" IconHover h-4 w-4"
-                          />
-                        </span>
+                          <span className="font-light text-xs text-gray-500 flex ">
+                            {item.symbolToken0} :{' '}
+                            {shortenAddress(item.addressToken0)}
+                            <ClipboardDocumentListIcon
+                              onClick={() => {
+                                copy(item.addressToken0)
+                                simpleNotificationToast('Copied to clipboard!')
+                              }}
+                              className=" IconHover h-4 w-4"
+                            />
+                          </span>
+                          <span className="font-light text-xs text-gray-500 flex">
+                            {item.symbolToken1} :{' '}
+                            {shortenAddress(item.addressToken1)}
+                            <ClipboardDocumentListIcon
+                              onClick={() => {
+                                copy(item.addressToken1)
+                                simpleNotificationToast('Copied to clipboard!')
+                              }}
+                              className=" IconHover h-4 w-4"
+                            />
+                          </span>
+                          <span className="font-light text-xs text-gray-500 flex">
+                            Contract Pair :{' '}
+                            {shortenAddress(item.addressContractPair)}
+                            <ClipboardDocumentListIcon
+                              onClick={() => {
+                                copy(item.addressContractPair)
+                                simpleNotificationToast('Copied to clipboard!')
+                              }}
+                              className=" IconHover h-4 w-4"
+                            />
+                          </span>
+                        </div>
+                      </div>
+                      <div>
+                        {numberWithCommas(item.price)} {item.symbolToken1}
+                      </div>
+                      <div>
+                        {' '}
+                        {numberWithCommas(
+                          Number(item.price) * Number(item.totalSuplly)
+                        )}{' '}
+                        {item.symbolToken1}
+                      </div>
+                      <div
+                        onClick={() => {
+                          router.push(
+                            `/trade/tradepair?contractaddress=${item.addressContractPair}&addresstoken0=${item.addressToken0}&addresstoken1=${item.addressToken1}`
+                          )
+                        }}
+                        className=" flex justify-center"
+                      >
+                        <ArrowTrendingUpIcon className=" IconHover h-8 w-8" />
                       </div>
                     </div>
-                    <div>
-                      {numberWithCommas(item.price)} {item.symbolToken1}
-                    </div>
-                    <div>
-                      {' '}
-                      {numberWithCommas(
-                        Number(item.price) * Number(item.totalSuplly)
-                      )}{' '}
-                      {item.symbolToken1}
-                    </div>
-                    <div
-                      onClick={() => {
-                        router.push(
-                          `/trade/tradepair?contractaddress=${item.addressContractPair}&addresstoken0=${item.addressToken0}&addresstoken1=${item.addressToken1}`
-                        )
-                      }}
-                      className=" flex justify-center"
-                    >
-                      <ArrowTrendingUpIcon className=" IconHover h-8 w-8" />
-                    </div>
-                  </div>
-                ))}
+                  ))
+                ) : (
+                  <h1 className='text-xl font-semibold text-center p-10'>Wrong network / Wallet not connected</h1>
+                )}
               </>
             )}
           </div>
