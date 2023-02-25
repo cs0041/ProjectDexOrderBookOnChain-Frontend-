@@ -1,18 +1,43 @@
 import { ConnectButton } from '@rainbow-me/rainbowkit'
 import Link from 'next/link'
-import React, { useContext } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import { useRouter } from 'next/router'
 import Loader from './Loader'
 import { ContractContext } from '../context/ContratContext'
+import ModalShowNew from './ModalShowNew'
 
 type Props = {}
 
 function Header({}: Props) {
   const { txNotification, isLoadingTxNavBar } = useContext(ContractContext)
   const { pathname } = useRouter()
+  const [isScrolled, setisScrolled] = useState(false)
+  const [showNew, setShowNew] = useState(false)
+
+    useEffect(() => {
+      const hadnleScroll = () => {
+       
+        if (window.scrollY > 0) {
+          setisScrolled(true)
+
+        } else {
+          setisScrolled(false)
+        }
+      }
+
+      window.addEventListener('scroll', hadnleScroll)
+
+      return () => {
+        window.removeEventListener('scroll', hadnleScroll)
+      }
+    }, [])
   return (
-    <div className="   sticky inset-0 z-10 ">
-      <div className="flex flex-row text-base font-semibold items-center justify-between px-10  bg-[#1c1c28] py-3 space-x-10">
+    <div className="sticky inset-0 z-10">
+      <div
+        className={`flex flex-row text-base font-semibold items-center justify-between px-10 transition-all duration-200 ${
+          isScrolled && 'bg-[#141414] '
+        } py-3 space-x-10`}
+      >
         <div className="flex flex-row items-center space-x-2">
           <h1 className="text-2xl mr-10 font-bold text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-pink-600 animate-pulse">
             Trustless
@@ -62,46 +87,14 @@ function Header({}: Props) {
               Faucet
             </h1>
           </Link>
+
+          <h1 
+          onClick={()=>setShowNew(true)}
+          className={`ButtonHover `}>✨ What's New ✨</h1>
         </div>
 
-        {/* <form className="flex items-center w-1/5 min-w-fit">
-          <input
-            type="text"
-            // onKeyPress={(event) => {
-            //   if (!/^[0-9]*[.,]?[0-9]*$/.test(event.key)) {
-            //     event.preventDefault()
-            //   }
-            // }}
-            onChange={(e) => {}}
-            className="outline-none pl-5 font-bold bg-[#13131b] border-[1px] border-[#1c1c28] hover:border-gray-600  focus:border-[1px] focus:border-gray-600 text-white text-sm rounded-lg block w-full p-1.5  "
-            placeholder="Address"
-            required
-          />
-
-          <button
-            type="submit"
-            onClick={(e) => {
-              e.preventDefault()
-            }}
-            className="transition-all p-2 ml-2 text-sm font-medium text-white  rounded-full  hover:bg-[#454258] "
-          >
-            <svg
-              className="w-5 h-5"
-              fill="none"
-              stroke="currentColor"
-              viewBox="0 0 24 24"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                stroke-width="2"
-                d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
-              ></path>
-            </svg>
-            <span className="sr-only">Search</span>
-          </button>
-        </form> */}
+        
+        {showNew && <ModalShowNew onClose={() => setShowNew(false)} />}
 
         <div className="flex flex-row items-center space-x-2">
           {isLoadingTxNavBar && (
